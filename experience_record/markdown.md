@@ -11,7 +11,7 @@ ES 5.0以后移除了string类型，将其拆分为 _text_ 和 _keyword_ 类型�
 
 在网上苦苦查阅到这样一个用法，mapping如下
 
-````
+```scss
 {
   "foo": {
     "type": "text",
@@ -24,13 +24,13 @@ ES 5.0以后移除了string类型，将其拆分为 _text_ 和 _keyword_ 类型�
     }
   }
 }
-````
+```
 可以利用foo.keyword字段现实聚合，满心欢喜，这不分词聚合齐活了~
 
 人生总是充满变数。一通操作后，问题它又来了，foo.keyword聚合是以foo整个字段值做聚合，不能对分词后结果做聚合...
 
 几经波折后，mapping改造如下
-````
+```scss
 {
   "foo": {
     "type": "text",
@@ -38,8 +38,10 @@ ES 5.0以后移除了string类型，将其拆分为 _text_ 和 _keyword_ 类型�
     "fielddata": true
   }
 }
-````
+```
 Doc values 不支持 _analyzed_ 字符串字段，所以启用 _fielddata_ 将正排索引加载到JVM内存堆中，实现对 _analyzed_ 字符串字段的聚合
+
+
 
 [docvalues-and-fielddata](https://www.elastic.co/guide/cn/elasticsearch/guide/current/docvalues-and-fielddata.html
 )
