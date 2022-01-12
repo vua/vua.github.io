@@ -11,7 +11,7 @@ ES 5.0以后移除了string类型，将其拆分为 _text_ 和 _keyword_ 类型�
 
 在网上苦苦查阅到这样一个用法，mapping如下
 
-```scss
+```json
 {
   "foo": {
     "type": "text",
@@ -30,7 +30,7 @@ ES 5.0以后移除了string类型，将其拆分为 _text_ 和 _keyword_ 类型�
 人生总是充满变数。一通操作后，问题它又来了，foo.keyword聚合是以foo整个字段值做聚合，不能对分词后结果做聚合...
 
 几经波折后，mapping改造如下
-```scss
+```json
 {
   "foo": {
     "type": "text",
